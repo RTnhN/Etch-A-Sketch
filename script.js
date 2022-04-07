@@ -30,11 +30,10 @@ for (let i = 0; i < gridWidth**2; i++){
 
 pixels = document.querySelectorAll(".container div")
 window.addEventListener("resize", resizeListener);
+
 let currentColor = 0;
-let currentColorString = 0;
 let colorChangeFactor = 15;
 let newColor = 0;
-let PixelsArray = []
 
 function lightPixel(e) {
   currentColor = +e.target.style.backgroundColor.split(",")[1];
