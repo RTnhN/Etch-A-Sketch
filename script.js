@@ -24,6 +24,7 @@ for (let i = 0; i < gridWidth**2; i++){
   container.lastChild.addEventListener("mouseover", lightPixel);
   container.lastChild.style.width = `${pixelSize}px`;
   container.lastChild.style.height = `${pixelSize}px`;
+  container.lastChild.style.backgroundColor = "rgb(255,255,255)";
 }
 
 pixels = document.querySelectorAll(".container div")
@@ -35,16 +36,17 @@ let newColor = 0;
 let PixelsArray = []
 
 function lightPixel(e) {
-  currentColor = e.target.style.backgroundColor.split(",")[1];
+  currentColor = +e.target.style.backgroundColor.split(",")[1];
   if (currentColor === undefined){
     currentColor = 255;
   };
+  
   if (e.ctrlKey === true){
-    colorChangeFactor = -5;
+    newColor = Math.floor(currentColor+colorChangeFactor);
   } else{
-    colorChangeFactor = 5;
+    newColor = Math.floor(currentColor-colorChangeFactor);
   };
-  newColor = Math.floor(currentColor-colorChangeFactor);
+
   if (newColor >255 || newColor < 0){
     newColor = currentColor;
   };
