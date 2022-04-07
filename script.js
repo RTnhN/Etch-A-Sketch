@@ -2,8 +2,16 @@ const container = document.querySelector(".container");
 const header = document.querySelector(".header");
 const footer = document.querySelector(".footer");
 
+let containerWidth = window.innerWidth;
+let containerHeight = window.innerHeight;
+let containerSize;
 
-let containerSize = window.innerHeight-header.clientHeight - footer.clientHeight;
+if (containerHeight > containerWidth){
+  containerSize = window.innerWidth -10;
+} else{
+  containerSize = window.innerHeight-header.clientHeight - footer.clientHeight;
+}
+
 let gridWidth = 10;
 let pixelSize = Math.floor(containerSize/gridWidth);
 containerSize = pixelSize*gridWidth
