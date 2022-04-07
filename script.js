@@ -5,9 +5,10 @@ const footer = document.querySelector(".footer");
 let containerWidth = window.innerWidth;
 let containerHeight = window.innerHeight;
 let containerSize;
+const WIDTH_BUFFER = 10;
 
 if (containerHeight > containerWidth){
-  containerSize = window.innerWidth -10;
+  containerSize = window.innerWidth - widthBuffer;
 } else{
   containerSize = window.innerHeight-header.clientHeight - footer.clientHeight;
 }
@@ -40,7 +41,7 @@ function lightPixel(e) {
   if (currentColor === undefined){
     currentColor = 255;
   };
-  
+
   if (e.ctrlKey === true){
     newColor = Math.floor(currentColor+colorChangeFactor);
   } else{
