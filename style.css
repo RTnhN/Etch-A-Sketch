@@ -1,10 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap');
+
 body{
   display:flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
 }
-
 
 .header{
   height: 100px;
@@ -28,10 +29,17 @@ body{
   background-color: rgb(255, 255, 255);
   flex-grow: 1;
 }
-/* .pixel:hover{
-  background-color: red;
-} */
 
 .pixelLighted{
   background-color: red;
+}
+
+.title{
+  font-family: 'Fugaz One', cursive;
+  font-size: 50px;}
+
+.controls{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
 }
