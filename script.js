@@ -1,16 +1,19 @@
 const container = document.querySelector(".container");
 const header = document.querySelector(".header");
 const footer = document.querySelector(".footer");
+const gameBody = document.querySelector(".gameBody");
+
+document.querySelectorAll(".wheel").forEach(wheel => wheel.addEventListener("mousedown", () => alert("I'm sorry, these knobs are lies. Just use the mouse on the display. As a consolation, I'll let you use the control key to make pixels lighter instead of darker.")))
 
 let containerWidth = window.innerWidth;
 let containerHeight = window.innerHeight;
 let containerSize;
-const WIDTH_BUFFER = 10;
+const GAME_BODY_WIDTH = 100;
 
 if (containerHeight > containerWidth){
-  containerSize = window.innerWidth - WIDTH_BUFFER;
+  containerSize = window.innerWidth - GAME_BODY_WIDTH ;
 } else{
-  containerSize = window.innerHeight-header.clientHeight - footer.clientHeight;
+  containerSize = window.innerHeight - header.clientHeight - footer.clientHeight;
 }
 
 let gridWidth = 50;
@@ -18,6 +21,8 @@ let pixelSize = Math.floor(containerSize/gridWidth);
 containerSize = pixelSize*gridWidth
 container.style.width = `${containerSize}px`;
 container.style.height = `${containerSize}px`;
+gameBody.style.width = `${containerSize+200}px`;
+footer.style.width = `${containerSize}px`;
 
 for (let i = 0; i < gridWidth**2; i++){
   container.appendChild(document.createElement("div"));
@@ -58,7 +63,7 @@ function resizeListener(e) {
   containerWidth = window.innerWidth;
   containerHeight = window.innerHeight;
   if (containerHeight > containerWidth){
-    containerSize = window.innerWidth - WIDTH_BUFFER;
+    containerSize = window.innerWidth - GAME_BODY_WIDTH;
   } else{
     containerSize = window.innerHeight-header.clientHeight - footer.clientHeight;
   }
@@ -66,6 +71,8 @@ function resizeListener(e) {
   containerSize = Math.floor(pixelSize*gridWidth);
   container.style.width = `${containerSize}px`;
   container.style.height = `${containerSize}px`;
+  gameBody.style.width = `${containerSize+200}px`;
+  footer.style.width = `${containerSize}px`;
   pixels.forEach(updatePixelSize);
 }
 
@@ -76,10 +83,15 @@ function updatePixelSize(pixel){
 
 function changeGridWidth(){
   gridWidth = parseInt(prompt("What is the size of the grid that you want?"),10);
+  while (gridWidth > 100){
+    gridWidth = parseInt(prompt("I'm sorry, that is too big of a grid size, please try something smaller."),10);
+  }
   pixelSize = Math.floor(containerSize/gridWidth);
   containerSize = Math.floor(pixelSize*gridWidth);
   container.style.width = `${containerSize}px`;
   container.style.height = `${containerSize}px`;
+  gameBody.style.width = `${containerSize+200}px`;
+  footer.style.width = `${containerSize}px`;
   removeAllChildNodes(container)
   for (let i = 0; i < gridWidth**2; i++){
     container.appendChild(document.createElement("div"));
@@ -96,3 +108,5 @@ function removeAllChildNodes(parent) {
       parent.removeChild(parent.firstChild);
   }
 }
+
+

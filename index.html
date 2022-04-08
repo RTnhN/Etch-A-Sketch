@@ -6,18 +6,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Etch-A-Sketch</title>
   <link rel="stylesheet" href="style.css">
+  
 </head>
 <body>
-  <script src="./script.js" defer></script>
-  <div class="header">
-    <span class="title">Etch-A-Sketch</span>
-    <div class="controls">
-      <button onclick="changeGridWidth();"> THIS IS THE BUTTON</button>
+  <div class="gameBody">
+    <div class="header">
+      <span class="title">Scratch-A-Drawing</span>
+      <div class="controls">
+        <button onclick="changeGridWidth();"> Change grid size</button>
+      </div>
+    </div>
+    <div class="container"></div>
+    <div class="footer">
+      <div class="wheel"></div>
+      <span class="footerText">Made By Zach</span>
+      <div class="wheel"></div>
     </div>
   </div>
-  <div class="container"></div>
-  <div class="footer">
-    <span class="footerText">Made By Zach</span>
-  </div>
+  <script src="./script.js"></script>
 </body>
 </html>
