@@ -2,6 +2,7 @@ const container = document.querySelector(".container");
 const header = document.querySelector(".header");
 const footer = document.querySelector(".footer");
 const gameBody = document.querySelector(".gameBody");
+const acc = document.getElementById('acc');
 
 document.querySelectorAll(".wheel").forEach(wheel => wheel.addEventListener("mousedown", () => alert("I'm sorry, these knobs are lies. Just use the mouse on the display. As a consolation, I'll let you use the control key to make pixels lighter instead of darker.")))
 
@@ -104,7 +105,8 @@ function changeGridWidth(){
 }
 
 function clearGame(){
-  pixels.forEach(pixel => pixel.style.backgroundColor = "rgb(255,255,255)");
+document.querySelectorAll(".container div")
+  .forEach(pixel => pixel.style.backgroundColor = "rgb(255,255,255)");
 }
 
 function removeAllChildNodes(parent) {
@@ -112,10 +114,17 @@ function removeAllChildNodes(parent) {
       parent.removeChild(parent.firstChild);
   }
 }
-
+let valueArray= [];
 window.addEventListener('devicemotion', (event) => {
   const accNorm = Math.sqrt(event.acceleration.x**2 + event.acceleration.y**2 + event.acceleration.z**2);
-  if (accNorm > 40){
+  if (accNorm >= 60){
     clearGame();
   }
 });
+
+setTimeout( ()=> {DeviceMotionEvent.requestPermission()
+.then(response => {
+  alert("Access to motion sensors is:" + response);
+}
+)},  1000);
+
