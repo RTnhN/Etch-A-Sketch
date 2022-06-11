@@ -103,10 +103,19 @@ function changeGridWidth(){
   }
 }
 
+function clearGame(){
+  pixels.forEach(pixel => pixel.style.backgroundColor = "rgb(255,255,255)");
+}
+
 function removeAllChildNodes(parent) {
   while (parent.firstChild) {
       parent.removeChild(parent.firstChild);
   }
 }
 
-
+window.addEventListener('devicemotion', (event) => {
+  const accNorm = Math.sqrt(event.acceleration.x**2 + event.acceleration.y**2 + event.acceleration.z**2);
+  if (accNorm > 40){
+    clearGame();
+  }
+});
