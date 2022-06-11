@@ -122,8 +122,21 @@ window.addEventListener('devicemotion', (event) => {
   }
 });
 
-document.getElementById('shakeToErase').addEventListener('click', ()=> {DeviceMotionEvent.requestPermission()
-  .then(response => {
-    alert("Access to motion sensors is:" + response);
-  }
+let permissionGranted = false;
+
+document.getElementById('shakeToErase').addEventListener('click', () => {
+  try {
+    if (!permissionGranted) {
+    DeviceMotionEvent.requestPermission().then(response => {
+        if (response == 'granted') {
+         alert('You can now shake to erase pixels.'); 
+         permissionGranted = true;
+        }
+    })}
+  clearGame();
+  
+  } catch (e) {
+    clearGame();
+  }});
+
   )});
