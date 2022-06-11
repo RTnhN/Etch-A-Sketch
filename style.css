@@ -63,7 +63,10 @@ button{
   border: 1px solid white;
   border-radius: 5px;
   font-size: 15px;
+}
 
+button:last-child{
+  margin-left: 1rem;
 }
 
 @media only screen and (max-width:400px) {

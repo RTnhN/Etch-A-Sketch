@@ -122,9 +122,8 @@ window.addEventListener('devicemotion', (event) => {
   }
 });
 
-setTimeout( ()=> {DeviceMotionEvent.requestPermission()
-.then(response => {
-  alert("Access to motion sensors is:" + response);
-}
-)},  1000);
-
+document.getElementById('shakeToErase').addEventListener('click', ()=> {DeviceMotionEvent.requestPermission()
+  .then(response => {
+    alert("Access to motion sensors is:" + response);
+  }
+  )});
