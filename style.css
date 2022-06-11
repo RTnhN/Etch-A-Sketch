@@ -5,6 +5,7 @@ body{
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  height: 100vh;
 }
 .gameBody{
   display:flex;
@@ -53,8 +54,8 @@ body{
   width: 50px;
   height: 50px;
   background-color:white;
-  border-radius: 25px;
-  border: 5px dotted lightgrey;
+  border-radius: 30px;
+  border: 3px dotted lightgrey;
 }
 button{
   color: white;
@@ -63,4 +64,11 @@ button{
   border-radius: 5px;
   font-size: 15px;
 
+}
+
+@media only screen and (max-width:400px) {
+  .body{
+    justify-content: flex-end;
+  }    
+  
 }
