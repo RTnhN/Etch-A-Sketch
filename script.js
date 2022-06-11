@@ -139,4 +139,20 @@ document.getElementById('shakeToErase').addEventListener('click', () => {
     clearGame();
   }});
 
-  )});
+let lastElement;
+document.addEventListener('touchmove', event => {
+  targetElement = document.elementFromPoint(event.touches[0].clientX, event.touches[0].clientY);
+  if (targetElement !== lastElement) {
+    if (targetElement.classList.contains("pixel")) {
+      currentColor = +targetElement.style.backgroundColor.split(",")[1];
+      if (currentColor === undefined) {
+        currentColor = 255;
+      };
+      newColor = Math.floor(currentColor - colorChangeFactor);
+      if (newColor > 255 || newColor < 0) {
+        newColor = currentColor;
+      };
+      targetElement.style.backgroundColor = `rgb(${newColor},${newColor},${newColor})`;
+      lastElement = targetElement;
+    }
+}});
